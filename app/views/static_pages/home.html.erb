@@ -5,7 +5,7 @@
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
     <h1>ようこそ</h1>
-    <p><a href="#" tabindex="-1" role="button" class="btn btn-primary btn-lg"        >アカウント登録</a></p>
-    <p><a href="#" tabindex="-1" role="button" class="btn btn-outline-primary btn-lg">ログイン</a></p>
+    <p><a href="/users/sign_up " tabindex="-1" role="button" class="btn btn-primary btn-lg"        >アカウント登録</a></p>
+    <p><a href="/users/sign_in " tabindex="-1" role="button" class="btn btn-outline-primary btn-lg">ログイン</a></p>
 
 <%end%>
