@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
 <h1>ろぐいんしてる</h1>
 <h4> メールアドレス： <%= current_user.email %> </h4>
-<h4> メールアドレス： <%= current_user.name %> </h4>
+<h4> ユーザー名： <%= current_user.name %> </h4>
 <hr>
-<%= render show %>
+<%= render 'shard/shop_list' %>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <% else %>
 <h1>ようこそ</h1>

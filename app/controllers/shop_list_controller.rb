@@ -1,5 +1,6 @@
 class ShopListController < ApplicationController
-  def show
+  def home
+
     # パラメーターを設定
     # params = URI.encode_www_form({})
     # URIを設定
