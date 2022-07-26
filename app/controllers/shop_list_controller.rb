@@ -17,14 +17,24 @@ class ShopListController < ApplicationController
     # レスポンスの確認
     logger.debug response.code
     logger.debug response.body
+
+
+
+
+    @place_name =[]
+    @place_id =[]
+    @place_address=[]
+    @place_num = 0
     # 例外処理
     begin
       @result = JSON.parse(response.body)
 
-      @place_name     = @result["results"][0]["name"]
-      @place_id       = @result["results"][0]["place_id"]
-      @place_address  = @result["results"][0]["vicinity"]
-
+      while !@result["results"][ @place_num]["place_id"].nil?
+        @place_name.push( @result["results"][ @place_num]["name"])
+        @place_id.push( @result["results"][ @place_num]["place_id"])
+        @place_address.push(@result["results"][ @place_num]["vicinity"])
+        @place_num+=1
+      end
 
     # エラー処理
     rescue => e
