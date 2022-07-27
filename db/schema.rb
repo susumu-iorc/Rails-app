@@ -33,7 +33,10 @@ ActiveRecord::Schema.define(version: 2022_07_25_104155) do
 
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "place_id"
+    t.text "shop_name"
     t.text "shop_address"
+    t.decimal "lat", precision: 10, scale: 7
+    t.decimal "lng", precision: 10, scale: 7
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["place_id"], name: "index_shops_on_place_id", unique: true
