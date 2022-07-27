@@ -3,5 +3,6 @@
 場所: <%= @place_address[view_i] %><br>
 id: <%= @place_id[view_i] %><br>
 存在しますか？: <%= @memo_exists[view_i] %><br>
+<%= link_to "mojidesu", "memos/"+@place_id[view_i] %>
 <hr>
 <% end %>
