@@ -1,5 +1,31 @@
+<% if @shop.nil? %>
+お店のデータが存在しません
+<% elsif @memo.nil? %>
+このお店は行けません
+<% else %>
 お店の名前：<%= @shop.shop_name %> <br>
 お店の場所：<%= @shop.shop_address %> <br>
 お気に入り度：<%= @memo.favorite %> <br>
 行った回数：<%= @memo.count %> <br>
-メモ：<%= @memo.memo %> <br>
+メモ：<%= memo_empty(@memo.memo) %> <br>
+<% end %>
+
+<h2>メモ編集</h2>
+  <div class="ele">
+  <textarea name="kansou" rows="4" cols="40">メモ</textarea><br>
+  </div>
+  <input type="button" class= "btn1" value="非表示ボタン" style= "margin: 20px;">
+  <input type="button" class= "btn2" value="表示ボタン" style= "margin: 20px;">
+
+  <script type="text/javascript">
+
+  $(function(){
+    $(".btn1").click(function() {
+      $(".ele").css("display", "none");
+    });
+    $(".btn2").click(function() {
+      $(".ele").css("display", "block");
+    });
+  });
+
+</script>
