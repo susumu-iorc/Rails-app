@@ -9,22 +9,23 @@
 行った回数：<%= @memo.count %> <br>
 
 <div id="view_memo" style="display:inline;">
-メモ  <input type="button" onclick="toggle_memo_btn()" value="編集" style= "margin: 20px;"><br>
-
+<h2>メモ  <input type="button" onclick="toggle_memo_btn()" value="編集" style= "margin: 20px;"></h2>
+<%= memo_empty(@memo.memo) %>
 </div>
 
 
 <div id="edit_memo" style="display:none;">
-<h2>メモ編集</h2>
-<input type="button" onclick="toggle_memo_btn()" value="編集終わり" style= "margin: 20px;"><br>
-<textarea name="kansou" rows="4" cols="40">メモ</textarea><br>
-</div>
+<h2>メモ編集  <input type="button" onclick="toggle_memo_btn()" value="編集中断" style= "margin: 20px;"></h2>
 
+<%= form_with url: "./update" do |form|%>
+  <%= form.submit %><br>
+  <%= form.text_area :memo , size: "50x60", value: @memo.memo %>
+  <%= form.hidden_field :place_id, value: @memo.place_id %>
+  <%= form.hidden_field :user_id, value: @memo.user_id %>
+<% end %>
 <% end %>
 
-
-  <script type="text/javascript">
-
+<script type="text/javascript">
 function toggle_memo_btn( ){
   const edit_memo = document.getElementById( 'edit_memo' );
   const view_memo = document.getElementById( 'view_memo' );
@@ -32,5 +33,5 @@ function toggle_memo_btn( ){
   edit_memo.style.display = edit_memo.style.display == 'inline' ? 'none' :'inline';
   view_memo.style.display = view_memo.style.display == 'inline' ? 'none' :'inline';
 }
-
 </script>
+
