@@ -4,8 +4,8 @@ class CreateShops < ActiveRecord::Migration[6.0]
       t.string :place_id
       t.text :shop_name
       t.text :shop_address
-      t.decimal :lat,  precision: 10, scale: 7
-      t.decimal :lng, precision: 10, scale: 7
+      t.string :lat
+      t.string :lng
       t.timestamps
     end
     add_index :shops, :place_id,  unique: true

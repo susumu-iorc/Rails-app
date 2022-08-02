@@ -14,9 +14,12 @@ ActiveRecord::Schema.define(version: 2022_07_25_104155) do
 
   create_table "bases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id"
-    t.text "user_address"
-    t.decimal "lat", precision: 10, scale: 7
-    t.decimal "lng", precision: 10, scale: 7
+    t.text "user_post_code"
+    t.text "user_pref"
+    t.text "user_city"
+    t.text "user_area"
+    t.string "lat"
+    t.string "lng"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -37,8 +40,8 @@ ActiveRecord::Schema.define(version: 2022_07_25_104155) do
     t.string "place_id"
     t.text "shop_name"
     t.text "shop_address"
-    t.decimal "lat", precision: 10, scale: 7
-    t.decimal "lng", precision: 10, scale: 7
+    t.string "lat"
+    t.string "lng"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["place_id"], name: "index_shops_on_place_id", unique: true
