@@ -6,7 +6,20 @@
 お店の名前：<%= @shop.shop_name %> <br>
 お店の場所：<%= @shop.shop_address %> <br>
 お気に入り度：<%= @memo.favorite %> <br>
-行った回数：<%= @memo.count %> <br>
+<%= form_with url: "./update" do |form|%>
+  <%= form.submit value: 'お気に入り変更' %><br>
+  <%= form.hidden_field :favo, value: 'favo' %>
+  <%= form.hidden_field :place_id, value: @memo.place_id %>
+  <%= form.hidden_field :user_id, value: @memo.user_id %>
+<% end %><br>
+
+行った回数：<%= @memo.count %>
+<%= form_with url: "./update" do |form|%>
+  <%= form.submit value: '行った' %><br>
+  <%= form.hidden_field :count, value: 'count' %>
+  <%= form.hidden_field :place_id, value: @memo.place_id %>
+  <%= form.hidden_field :user_id, value: @memo.user_id %>
+<% end %><br>
 
 <div id="view_memo" style="display:inline;">
 <h2>メモ  <input type="button" onclick="toggle_memo_btn()" value="編集" style= "margin: 20px;"></h2>
@@ -18,7 +31,7 @@
 <h2>メモ編集  <input type="button" onclick="toggle_memo_btn()" value="編集中断" style= "margin: 20px;"></h2>
 
 <%= form_with url: "./update" do |form|%>
-  <%= form.submit %><br>
+  <%= form.submit value: '保存' %><br>
   <%= form.text_area :memo , size: "50x60", value: @memo.memo %>
   <%= form.hidden_field :place_id, value: @memo.place_id %>
   <%= form.hidden_field :user_id, value: @memo.user_id %>
