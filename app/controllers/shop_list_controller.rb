@@ -14,6 +14,8 @@ class ShopListController < ApplicationController
           redirect_to "/config/base"
         end
       end
+
+      gon.base = @base
       # PLACE API のURI
       uri = URI.parse("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@base.lat},#{@base.lng}&radius=500&types=restaurant&language=ja&key=#{Constants::GOOGLE_API_KEY}")
     
