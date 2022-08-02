@@ -9,11 +9,30 @@
 <script>
  var MyLatLng = new google.maps.LatLng(gon.base.lat, gon.base.lng); //座標を指定
  var Options = {
- zoom: 15, //地図の縮尺値を指定
+ zoom: 16, //地図の縮尺値を指定
  center: MyLatLng, //地図の中心座標
- mapTypeId: 'roadmap' //地図の種類を指定
+ mapTypeId: 'roadmap', //地図の種類を指定,
+ mapTypeControl: false,
+scaleControl: false,
+disableDoubleClickZoom:false,
+zoomControl:false,
+scrollwheel:false
  };
+
+
  var map = new google.maps.Map(document.getElementById('map-test01'), Options); //埋め込むMAPのidを指定
+ //マーカーの指定
+var marker = new google.maps.Marker({
+    position: MyLatLng,
+    map: map, 
+    icon: new google.maps.MarkerImage(
+      'http://www.google.com/mapfiles/markerZ.png',//マーカー画像URL
+      new google.maps.Size(20, 34),//マーカーの表示サイズ（画像サイズに合わせる）
+      new google.maps.Point(0, 0),//マーカー画像表示の起点（変更しない）
+      new google.maps.Point(20, 34)//マーカー位置の調整（適時）
+    ),  
+});
+ 
 </script>
 
 
@@ -26,3 +45,4 @@
 <p><a href="/users/sign_in " tabindex="-1" role="button" class="btn btn-outline-primary btn-lg">ログイン</a></p>
 
 <%end%>
+
