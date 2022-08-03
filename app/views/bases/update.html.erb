@@ -2,7 +2,7 @@
 <h1>住所登録</h1>
 
 <% if @base.blank? %>
-  <%= form_with url: "/config/base/update" do |form|%>
+  <%= form_with url: "./base/update" do |form|%>
     <%= form.label '郵便番号' %>
     <%= form.text_field :post_code, placeholder: '000-0000' %><br>
     <%= form.label '都道府県' %>  
@@ -15,7 +15,7 @@
     <%= form.submit value: '登録' %><br>
   <% end %>
   <%else%>
-  <%= form_with url: "/config/base/update" do |form|%>
+  <%= form_with url: "./base/update" do |form|%>
     <%= form.label '郵便番号' %>
     <%= form.text_field :post_code, placeholder: '000-0000', value: @base.user_post_code %><br>
     <%= form.label '都道府県' %>

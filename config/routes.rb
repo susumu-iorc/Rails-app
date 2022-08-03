@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'shop_list#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'config/base', to: 'bases#show'
-  post 'config/base/update', to: 'bases#create'
+  post 'config/base/update', to: 'bases#update'
 
   get  'memos/:place_id', to: 'memos#show'
   post 'memos/update', to: 'memos#update'

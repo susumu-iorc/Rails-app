@@ -1,11 +1,13 @@
 class BasesController < ApplicationController
+  protect_from_forgery 
   #住所登録のページ
   def show
     @base = Base.find_by(user_id: current_user.id)
   end
 
   # 住所登録の変更手続き
-  def create
+  def update
+
     @base = Base.new
     @full_address = "#{params[:pref]}#{params[:city]}#{params[:area]}" 
     puts Constants::GOOGLE_API_KEY 
@@ -48,7 +50,7 @@ class BasesController < ApplicationController
           puts 'make miss'
         end
       else
-        base = Base.update( user_id:        current_user.id,
+        base = Base.update( user_id: current_user.id,
                             user_post_code: params[:post_code],
                             user_pref:      params[:pref],
                             user_city:      params[:city],
@@ -57,9 +59,9 @@ class BasesController < ApplicationController
                             lng:            @result["results"][0]["geometry"]["location"]["lng"]
                             )
         puts 'SET'
-       end
+      end
     end       
 
-
+    redirect_to root_path
   end
 end
