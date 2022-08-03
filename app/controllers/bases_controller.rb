@@ -2,7 +2,11 @@ class BasesController < ApplicationController
   protect_from_forgery 
   #住所登録のページ
   def show
-    @base = Base.find_by(user_id: current_user.id)
+    if user_signed_in?
+      @base = Base.find_by(user_id: current_user.id)
+    else
+      redirect_to root_path
+    end
   end
 
   # 住所登録の変更手続き
