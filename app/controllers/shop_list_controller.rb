@@ -33,7 +33,9 @@ class ShopListController < ApplicationController
           @place_name   = []
           @place_id     = []
           @place_address= []
-          @memo_exists = []
+          @place_lat    = []
+          @place_lng    = []
+          @memo_exists  = []
           @place_num    = 0
           # 例外処理
           begin
@@ -43,6 +45,8 @@ class ShopListController < ApplicationController
               @place_name.push    ( @result[ "results" ][ @place_num ][ "name" ])
               @place_id.push      ( @result[ "results" ][ @place_num ][ "place_id" ])
               @place_address.push ( @result[ "results" ][ @place_num ][ "vicinity" ])
+              @place_lat.push ( @result["results"][ @place_num ]["geometry"]["location"]["lat"])
+              @place_lng.push ( @result["results"][ @place_num ]["geometry"]["location"]["lng"])
 
               #Shopがデータベースに存在しなかったらデータベースに保存
               if !Shop.exists?(place_id: @place_id[@place_num])
@@ -81,6 +85,13 @@ class ShopListController < ApplicationController
         end
       end
     end
+
+    # gonでjsにわたす変数を宣言
+    gon.A_Z_Char = [*'A'..'Z']
+    gon.place_name = @place_name 
+    gon.place_num = @place_num
+    gon.place_lat = @place_lat
+    gon.place_lng = @place_lng
   end
   def new
   end
