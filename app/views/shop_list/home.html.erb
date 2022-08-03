@@ -34,6 +34,7 @@ var marker = new google.maps.Marker({
 });
 
 let PlaceMarkers = [];
+let infoWindow = [];
 for(let i=0;i<gon.place_num;i++){
 
   let tmp = new google.maps.LatLng(gon.place_lat[i], gon.place_lng[i]);
@@ -42,13 +43,26 @@ for(let i=0;i<gon.place_num;i++){
                     position: tmp,
                     map: map, 
                     icon: new google.maps.MarkerImage(
-  'http://www.google.com/mapfiles/marker' +gon.A_Z_Char[i] + '.png',//マーカー画像URL
-  new google.maps.Size(20, 34),//マーカーの表示サイズ（画像サイズに合わせる）
-  new google.maps.Point(0, 0),//マーカー画像表示の起点（変更しない）
-  new google.maps.Point(20, 34)//マーカー位置の調整（適時）
-), 
-                });
+                             'http://www.google.com/mapfiles/marker' +gon.A_Z_Char[i] + '.png',//マーカー画像URL
+                              new google.maps.Size(20, 34),//マーカーの表示サイズ（画像サイズに合わせる）
+                              new google.maps.Point(0, 0),//マーカー画像表示の起点（変更しない）
+                              new google.maps.Point(20, 34)//マーカー位置の調整（適時）
+                              ), });
+  // 吹き出しの追加
+  infoWindow[i] = new google.maps.InfoWindow({
+    //content: '<a href="https://www.google.co.jp/maps/dir/' + gon.base.lat + ',' + gon.base.lng + '/' + gon.place_lat[i] + ',' + gon.place_lng[i] + '">' + gon.place_name[i] + '</a>'
+    content: '<a href="https://www.google.com/maps/dir/?api=1&origin=' + gon.base.lat + ',' + gon.base.lng + '&destination=' + gon.place_name[i] +'&destination_place_id=' + gon.place_id[i]+ '&travelmode=walking' + '">' + gon.place_name[i] + '</a>'
+    });
+            
+  markerEvent(i); 
 }
+// マーカークリック時に吹き出しを表示する
+function markerEvent(i) {
+  PlaceMarkers[i].addListener('click', function() {
+    infoWindow[i].open(map, PlaceMarkers[i]);
+  });
+}           
+
 
 
 
