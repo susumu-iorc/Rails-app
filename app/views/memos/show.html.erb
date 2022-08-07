@@ -46,13 +46,12 @@ function toggle_memo_btn( ){
 }
 
 $(document).ready(function(){
-  var BaseLatLng = new google.maps.LatLng(gon.base.lat, gon.base.lng); //座標を指定
-  var ShopLatLng = new google.maps.LatLng(gon.shop.lat, gon.shop.lng); //座標を指定
-  
-
+  var BaseLatLng = new google.maps.LatLng(gon.base.lat, gon.base.lng); 
+  var ShopLatLng = new google.maps.LatLng(gon.shop.lat, gon.shop.lng); 
+  var CentLatLng = new google.maps.LatLng( (parseFloat(gon.shop.lat) + parseFloat(gon.base.lat)) / 2 , (parseFloat(gon.shop.lng) + parseFloat(gon.base.lng)) / 2 );
   var Options = {
   zoom: 16, //地図の縮尺値を指定
-  center: BaseLatLng, //地図の中心座標
+  center: CentLatLng, //地図の中心座標
   mapTypeId: 'roadmap', //地図の種類を指定,
   mapTypeControl: false,
   scaleControl: false,
