@@ -3,16 +3,13 @@
 <% elsif @memo.nil? %>
 このお店は行けません
 <% else %>
-<h1><%= @shop.shop_name %></h1>
+<h1></h1>
 <div id="map-test01"></div>
+<h1><%= @shop.shop_name %></h1>
+<%= render 'favo_star' %><br>
 お店の場所：<%= @shop.shop_address %> <br>
-お気に入り度：<%= @memo.favorite %> <br>
-<%= form_with url: "./update" do |form|%>
-  <%= form.submit value: 'お気に入り変更' %><br>
-  <%= form.hidden_field :favo, value: 'favo' %>
-  <%= form.hidden_field :place_id, value: @memo.place_id %>
-  <%= form.hidden_field :user_id, value: @memo.user_id %>
-<% end %><br>
+お気に入り度：
+
 
 行った回数：<%= @memo.count %>
 <%= form_with url: "./update" do |form|%>
@@ -51,6 +48,7 @@ function toggle_memo_btn( ){
 $(document).ready(function(){
   var BaseLatLng = new google.maps.LatLng(gon.base.lat, gon.base.lng); //座標を指定
   var ShopLatLng = new google.maps.LatLng(gon.shop.lat, gon.shop.lng); //座標を指定
+  
 
   var Options = {
   zoom: 16, //地図の縮尺値を指定

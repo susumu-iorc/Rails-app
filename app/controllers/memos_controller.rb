@@ -42,8 +42,8 @@ class MemosController < ApplicationController
       # お気に入り変更
       if !params[:favo].nil?
 
-        if @memo.favorite < 3 then @memo.favorite += 1
-        else @memo.favorite = 0
+        if params[:favo].to_i >= 0 && params[:favo].to_i <= 3 
+            @memo.favorite = params[:favo].to_i
         end
         if @memo.update(favorite: @memo.favorite)
           # 更新に成功した場合を扱う。
