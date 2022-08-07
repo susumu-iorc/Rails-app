@@ -3,9 +3,10 @@ class MemosController < ApplicationController
   def show
     if user_signed_in?
       @place_id = params[:place_id]
-      @shop   = Shop.find_by(place_id: @place_id)
-      @memo   = Memo.find_by(place_id: @place_id, user_id: current_user.id)
-
+      @shop     = Shop.find_by(place_id: @place_id)
+      @memo     = Memo.find_by(place_id: @place_id, user_id: current_user.id)
+      gon.base  = Base.find_by(user_id: current_user.id)
+      gon.place = @shop 
     else
       redirect_to root_path
     end
