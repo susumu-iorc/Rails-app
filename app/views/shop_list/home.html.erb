@@ -1,15 +1,12 @@
 <% if user_signed_in? %>
-<h1>ろぐいんしてる</h1>
-<h4> メールアドレス： <%= current_user.email %> </h4>
-<h4> ユーザー名： <%= current_user.name %> </h4>
-<hr>
 
-<div id="map-test01"></div>
+
+<div id="view-map"></div>
 <script src="http://maps.google.com/maps/api/js?key=<%= Constants::GOOGLE_API_KEY%>&language=ja"></script>
 <script>
 
 
-
+$(document).ready(function(){
  var BaseLatLng = new google.maps.LatLng(gon.base.lat, gon.base.lng); //座標を指定
 
  var Options = {
@@ -24,7 +21,7 @@ scrollwheel:false
  };
 
 
- var map = new google.maps.Map(document.getElementById('map-test01'), Options); //埋め込むMAPのidを指定
+ var map = new google.maps.Map(document.getElementById('view-map'), Options); //埋め込むMAPのidを指定
  //マーカーの指定
 var marker = new google.maps.Marker({
     position: BaseLatLng,
@@ -63,7 +60,7 @@ function markerEvent(i) {
   });
 }           
 
-
+});
 
 
 </script>

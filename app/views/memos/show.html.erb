@@ -4,12 +4,10 @@
 このお店は行けません
 <% else %>
 <h1></h1>
-<div id="map-test01"></div>
+<div id="view-map"></div>
 <h1><%= @shop.shop_name %></h1>
 <%= render 'favo_star' %><br>
 お店の場所：<%= @shop.shop_address %> <br>
-お気に入り度：
-
 
 行った回数：<%= @memo.count %>
 <%= form_with url: "./update" do |form|%>
@@ -61,7 +59,7 @@ $(document).ready(function(){
   };
 
 
-  var map = new google.maps.Map(document.getElementById('map-test01'), Options); //埋め込むMAPのidを指定
+  var map = new google.maps.Map(document.getElementById('view-map'), Options); //埋め込むMAPのidを指定
   //マーカーの指定
   var marker = new google.maps.Marker({
       position: BaseLatLng,
