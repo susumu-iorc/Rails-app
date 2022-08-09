@@ -4,8 +4,11 @@
       <div class="card-body">
         <h5 class="card-title"><%= @place_name[view_i] %></h5>
         <%= render 'shard/favo_star', i: view_i %>
-        <h6 class="card-subtitle mb-2 text-muted"><%=@place_address[view_i]%></h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <%=@place_address[view_i]%>
+          <img src="http://www.google.com/mapfiles/marker<%=@A_Z_Char[view_i]%>.png">
+        </h6>
+        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
       </div>
     </a>
   </div>

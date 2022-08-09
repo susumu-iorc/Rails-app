@@ -91,7 +91,8 @@ class ShopListController < ApplicationController
       end
     end
     # gonでjsにわたす変数を宣言
-    gon.A_Z_Char = [*'A'..'Z']
+    @A_Z_Char = [*'A'..'Z']
+    gon.A_Z_Char = @A_Z_Char 
     gon.place_name = @place_name 
     gon.place_id   = @place_id 
     gon.place_num = @place_num
