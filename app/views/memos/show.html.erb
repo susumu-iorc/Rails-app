@@ -3,82 +3,9 @@
 <% elsif @memo.nil? %>
 このお店は行けません
 <% else %>
-<h1></h1>
-<div id="view-map"></div>
-<h1><%= @shop.shop_name %></h1>
-<%= render 'favo_star' %><br>
-お店の場所：<%= @shop.shop_address %> <br>
-
-行った回数：<%= @memo.count %>
-<%= form_with url: "./update" do |form|%>
-  <%= form.submit value: '行った' %><br>
-  <%= form.hidden_field :count, value: 'count' %>
-  <%= form.hidden_field :place_id, value: @memo.place_id %>
-  <%= form.hidden_field :user_id, value: @memo.user_id %>
-<% end %><br>
-
-<div id="view_memo" style="display:inline;">
-<h2>メモ  <input type="button" onclick="toggle_memo_btn()" value="編集" style= "margin: 20px;"></h2>
-<%= memo_empty(@memo.memo) %>
-</div>
+  <%= render 'memo' %>
 
 
-<div id="edit_memo" style="display:none;">
-<h2>メモ編集  <input type="button" onclick="toggle_memo_btn()" value="編集中断" style= "margin: 20px;"></h2>
-
-<%= form_with url: "./update" do |form|%>
-  <%= form.submit value: '保存' %><br>
-  <%= form.text_area :memo , size: "50x60", value: @memo.memo %>
-  <%= form.hidden_field :place_id, value: @memo.place_id %>
-  <%= form.hidden_field :user_id, value: @memo.user_id %>
-<% end %>
-
-<script src="http://maps.google.com/maps/api/js?key=<%= Constants::GOOGLE_API_KEY%>&language=ja"></script>
-<script type="text/javascript">
-function toggle_memo_btn( ){
-  const edit_memo = document.getElementById( 'edit_memo' );
-  const view_memo = document.getElementById( 'view_memo' );
-
-  edit_memo.style.display = edit_memo.style.display == 'inline' ? 'none' :'inline';
-  view_memo.style.display = view_memo.style.display == 'inline' ? 'none' :'inline';
-}
-
-$(document).ready(function(){
-  var BaseLatLng = new google.maps.LatLng(gon.base.lat, gon.base.lng); 
-  var ShopLatLng = new google.maps.LatLng(gon.shop.lat, gon.shop.lng); 
-  var CentLatLng = new google.maps.LatLng( (parseFloat(gon.shop.lat) + parseFloat(gon.base.lat)) / 2 , (parseFloat(gon.shop.lng) + parseFloat(gon.base.lng)) / 2 );
-  var Options = {
-  zoom: 16, //地図の縮尺値を指定
-  center: CentLatLng, //地図の中心座標
-  mapTypeId: 'roadmap', //地図の種類を指定,
-  mapTypeControl: false,
-  scaleControl: false,
-  disableDoubleClickZoom:false,
-  zoomControl:false,
-  scrollwheel:false
-  };
-
-
-  var map = new google.maps.Map(document.getElementById('view-map'), Options); //埋め込むMAPのidを指定
-  //マーカーの指定
-  var marker = new google.maps.Marker({
-      position: BaseLatLng,
-      map: map, 
-      icon: 
-        '	https://maps.google.com/mapfiles/ms/micons/green-dot.png',
-  });
-
-    //マーカーの指定
-  var ShopMarker = new google.maps.Marker({
-      position: ShopLatLng,
-      map: map, 
-      icon: 
-        '	https://maps.google.com/mapfiles/ms/micons/red-dot.png',
-  });
-
-});
-
-</script>
 
 
 

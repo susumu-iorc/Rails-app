@@ -1,12 +1,16 @@
 #view-map { 
-    height: 400px; 
+    height: 50%; 
     width: 100%;
-    margin-top: 1em;
-    }
-#mycont {
-    padding-top: 70px;
+    margin-top: 0.1em;
+    background-color: white;
 }
-    
+
+.mycont {
+    padding-top: 0px;
+}
+.list_cont{
+    padding-top: 40%;
+}   
 body{
     font-size:1.6rem;/* 16px*/
     line-height: 2;

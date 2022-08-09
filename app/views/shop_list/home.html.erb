@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
 
 
-<div id="view-map"></div>
+<div id="view-map" class="position-fixed"></div>
 <script src="http://maps.google.com/maps/api/js?key=<%= Constants::GOOGLE_API_KEY%>&language=ja"></script>
 <script>
 
@@ -66,9 +66,9 @@ function markerEvent(i) {
 </script>
 
  
-
-<%= render 'shard/shop_list' %>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<div class="list_cont">
+  <%= render 'shard/shop_list' %>
+</div>
 <% else %>
 <h1>ようこそ</h1>
 <p><a href="/users/sign_up " tabindex="-1" role="button" class="btn btn-primary btn-lg"        >アカウント登録</a></p>
