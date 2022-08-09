@@ -36,6 +36,10 @@
         <% end %>
     </div>
   </nav>
+  
+  <% if yield(:map) == "view" %> <%# ログインしていたらメニュー表示　%>
+  <div id="view-map" class="position-fixed map-box"></div>
+  <% end %>
   <div class="mycont container-fluid text-center">
 
 

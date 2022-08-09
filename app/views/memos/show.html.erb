@@ -5,7 +5,7 @@
   <p>このお店は行けません</p>
 
 <% else %>
-  <div id="view-map" class="position-fixed"></div>
+<% provide :map, 'view' %>
   <div class="list_cont">
     <%= render 'memo' %>
   </div>
@@ -40,15 +40,14 @@
       var marker = new google.maps.Marker({
       position: BaseLatLng,
       map: map, 
-      icon: 
-        '	https://maps.google.com/mapfiles/ms/micons/green-dot.png',
+      icon: 'https://maps.google.com/mapfiles/ms/micons/green-dot.png',
     });
 
     //マーカーの指定
     var ShopMarker = new google.maps.Marker({
       position: ShopLatLng,
       map: map, 
-      icon: '	https://maps.google.com/mapfiles/ms/micons/red-dot.png',
+      icon: 'https://maps.google.com/mapfiles/ms/micons/red-dot.png',
     });
   });
   </script>

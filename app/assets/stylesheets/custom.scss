@@ -1,5 +1,13 @@
 
-
+    #view-map { 
+        z-index: 3;
+        width: 100%;
+        height: 300px;
+    }
+.map-box{
+    margin-top:1px;
+    background-color: white;
+}
 .mycont {
     padding-top: 0px;
 }
@@ -26,15 +34,9 @@ h2 {
         font-size: 2.4rem;/* 24px*/
     }
     .list_cont{
-        padding-top: 38%;
+        margin-top: 320px;
     }  
-    #view-map { 
-        z-index: 3;
-        height: 50%; 
-        width: 98%;
-        margin-top: 0.1em;
-        background-color: white;
-    }
+
 }
 @media screen and (max-width: 640px) {/* 640px以下*/
     body{
@@ -47,14 +49,8 @@ h2 {
         font-size: 2rem;/* 20px*/
     }
     .list_cont{
-        padding-top: 110%;
+        padding-top: 320px;
     }  
-    #view-map { 
-        z-index: 3;
-        height: 50%; 
-        width: 95%;
-        margin-top: 0.1em;
-        background-color: white;
-    }
+
 }
 
