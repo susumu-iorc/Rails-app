@@ -1,11 +1,14 @@
 <% if @shop.nil? %>
+  <% provide :title, '不正なパラメーター' %>
   <p>お店のデータが存在しません</p>
 
 <% elsif @memo.nil? %>
+  <% provide :title, '不正なパラメーター' %>
   <p>このお店は行けません</p>
 
 <% else %>
-<% provide :map, 'view' %>
+  <% provide :map, 'view' %>
+  <% provide :title, @shop.shop_name %>
   <div class="list_cont">
     <%= render 'memo' %>
   </div>

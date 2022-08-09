@@ -23,8 +23,7 @@ class MemosController < ApplicationController
       if !params[:memo].nil?
         puts "FAVORITE => #{@memo.favorite}"
         if @memo.update(memo:params[:memo])
-          # 更新に成功した場合を扱う。
-          puts "SEIKO========================"
+          # 更新に成功した場合リロード
           redirect_to request.referer
         end
       end
@@ -33,8 +32,7 @@ class MemosController < ApplicationController
       if !params[:count].nil?
         puts "FAVORITE => #{@memo.favorite}"
         if @memo.update(count: @memo.count + 1)
-          # 更新に成功した場合を扱う。
-          puts "COUNTUP!========================"
+          # 更新に成功した場合リロード
           redirect_to request.referer
         end
       end
@@ -46,13 +44,12 @@ class MemosController < ApplicationController
             @memo.favorite = params[:favo].to_i
         end
         if @memo.update(favorite: @memo.favorite)
-          # 更新に成功した場合を扱う。
-          puts "COUNTUP!========================"
+          # 更新に成功した場合リロード
           redirect_to request.referer
         end
       end
     else
-      puts "ERRORRRRRRRRRRRR@@@@@@@@@@@@@@@@@@@@@@"  
+      puts "ERRORRRRRRRRRRRR@@@@@@@@@@@@@@@@@@@@@@"   # 特に意味はないが、デバッグしやすいように
       puts current_user.id
       redirect_to request.referer
     end

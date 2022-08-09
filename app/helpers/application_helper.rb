@@ -1,9 +1,27 @@
 module ApplicationHelper
+  APPNAME   = "アプリケーション"
+  DEVELOPER = "O.S"
+
+  def view_appname
+    return APPNAME
+  end
+
+  def view_developer
+    return DEVELOPER
+  end
+  def head_title(title = '')
+    if title.empty?
+        return APPNAME
+    else
+        return APPNAME  + " | " + title
+    end
+  end
+
   def memo_empty(memo = '')
     if memo.empty?
-        'まだメモが存在しません'
+        return 'まだメモが存在しません'
     else
-        memo
+        return memo
     end
   end
 

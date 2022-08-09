@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
   <% provide :map, 'view' %>
+  <% provide :title, '店一覧' %>
   <div class="list_cont">
     <%= render 'shard/shop_list' %>
   </div>
