@@ -23,35 +23,37 @@
     }
 
     $(document).ready(function(){
-      var BaseLatLng = new google.maps.LatLng(gon.base.lat, gon.base.lng); //拠点の座標
-      var ShopLatLng = new google.maps.LatLng(gon.shop.lat, gon.shop.lng); //店の座標
-      var CentLatLng = new google.maps.LatLng( (parseFloat(gon.shop.lat) + parseFloat(gon.base.lat)) / 2 ,
-                                               (parseFloat(gon.shop.lng) + parseFloat(gon.base.lng)) / 2 ); //拠点と店の中心を地図の中心とする
-      var Options = { zoom                  : 16,         //地図の縮尺値を指定
-                      center                : CentLatLng, //地図の中心座標
-                      mapTypeId             : 'roadmap',  //地図の種類を指定,
-                      mapTypeControl        : false,      //
-                      scaleControl          : false,      //ズームするとピンの位置ずれるのでオフ
-                      disableDoubleClickZoom: false,      //ダブルクリックでのズームもオフ
-                      zoomControl           : false,      //同上
-                      scrollwheel           : false       //同上
-                      };
+      setTimeout(function(){ // 読み込み速度によってマップが表示されなくなる問題対策でマップ描画を100ms遅延させる
+        var BaseLatLng = new google.maps.LatLng(gon.base.lat, gon.base.lng); //拠点の座標
+        var ShopLatLng = new google.maps.LatLng(gon.shop.lat, gon.shop.lng); //店の座標
+        var CentLatLng = new google.maps.LatLng( (parseFloat(gon.shop.lat) + parseFloat(gon.base.lat)) / 2 ,
+                                                (parseFloat(gon.shop.lng) + parseFloat(gon.base.lng)) / 2 ); //拠点と店の中心を地図の中心とする
+        var Options = { zoom                  : 16,         //地図の縮尺値を指定
+                        center                : CentLatLng, //地図の中心座標
+                        mapTypeId             : 'roadmap',  //地図の種類を指定,
+                        mapTypeControl        : false,      //
+                        scaleControl          : false,      //ズームするとピンの位置ずれるのでオフ
+                        disableDoubleClickZoom: false,      //ダブルクリックでのズームもオフ
+                        zoomControl           : false,      //同上
+                        scrollwheel           : false       //同上
+                        };
 
 
-      var map = new google.maps.Map(document.getElementById('view-map'), Options); //埋め込むMAPのidを指定
+        var map = new google.maps.Map(document.getElementById('view-map'), Options); //埋め込むMAPのidを指定
+        //マーカーの指定
+        var marker = new google.maps.Marker({
+        position: BaseLatLng,
+        map: map, 
+        icon: 'https://maps.google.com/mapfiles/ms/micons/green-dot.png',
+      });
+
       //マーカーの指定
-      var marker = new google.maps.Marker({
-      position: BaseLatLng,
-      map: map, 
-      icon: 'https://maps.google.com/mapfiles/ms/micons/green-dot.png',
-    });
-
-    //マーカーの指定
-    var ShopMarker = new google.maps.Marker({
-      position: ShopLatLng,
-      map: map, 
-      icon: 'https://maps.google.com/mapfiles/ms/micons/red-dot.png',
-    });
+      var ShopMarker = new google.maps.Marker({
+        position: ShopLatLng,
+        map: map, 
+        icon: 'https://maps.google.com/mapfiles/kml/paddle/red-stars.png',
+      });
+    }, 100);
   });
   </script>
 <% end %>
