@@ -1,6 +1,6 @@
 module ApplicationHelper
-  APPNAME   = "アプリケーション"
-  DEVELOPER = "O.S"
+  APPNAME   = "食べメモ"
+  DEVELOPER = "O. S."
 
   def view_appname
     return APPNAME
