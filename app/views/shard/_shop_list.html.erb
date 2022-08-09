@@ -1,8 +1,14 @@
 <% ( 0 .. @place_num -1 ).each do |view_i| %>
-店名: <%= @place_name[view_i] %><br>
-場所: <%= @place_address[view_i] %><br>
-id: <%= @place_id[view_i] %><br>
-存在しますか？: <%= @memo_exists[view_i] %><br>
-<%= link_to "mojidesu", "memos/"+@place_id[view_i] %>
-<hr>
+  <div class="card" style="width: 100%;">
+    <a href="/memos/<%= @place_id[view_i] %>" class="card-link" style="text-decoration: none;">
+      <div class="card-body">
+        <h5 class="card-title"><%= @place_name[view_i] %></h5>
+        <%= render 'shard/favo_star', i: view_i %>
+        <h6 class="card-subtitle mb-2 text-muted"><%=@place_address[view_i]%></h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </a>
+  </div>
 <% end %>
+
+

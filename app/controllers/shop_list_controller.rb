@@ -36,6 +36,7 @@ class ShopListController < ApplicationController
           @place_lat    = []
           @place_lng    = []
           @memo_exists  = []
+          @memo         = []
           @place_num    = 0
           # 例外処理
           begin
@@ -64,7 +65,7 @@ class ShopListController < ApplicationController
 
               # Memoがデータベースに存在しなかっtら作成、保存
               if Memo.exists?(user_id: current_user.id, place_id: @place_id[@place_num])
-                @memo_exists.push("memo存在します")
+
               else
                 memo = Memo.new( user_id: current_user.id, 
                                   place_id: @result["results"][ @place_num ]["place_id"],
@@ -75,8 +76,10 @@ class ShopListController < ApplicationController
                   @memo_exists.push("memo作りました")
                 end
               end
+              @memo.push( Memo.find_by(place_id: @place_id[@place_num], user_id: current_user.id) )
               @place_num+=1
             end
+
 
           # エラー処理
           rescue => e
@@ -85,7 +88,6 @@ class ShopListController < ApplicationController
         end
       end
     end
-
     # gonでjsにわたす変数を宣言
     gon.A_Z_Char = [*'A'..'Z']
     gon.place_name = @place_name 

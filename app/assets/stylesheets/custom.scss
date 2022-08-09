@@ -29,6 +29,7 @@ h2 {
         padding-top: 38%;
     }  
     #view-map { 
+        z-index: 3;
         height: 50%; 
         width: 98%;
         margin-top: 0.1em;
@@ -49,6 +50,7 @@ h2 {
         padding-top: 110%;
     }  
     #view-map { 
+        z-index: 3;
         height: 50%; 
         width: 95%;
         margin-top: 0.1em;
