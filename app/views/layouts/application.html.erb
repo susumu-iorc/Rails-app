@@ -38,7 +38,10 @@
   </nav>
   
   <% if yield(:map) == "view" %> <%# ログインしていたらメニュー表示　%>
-  <div id="view-map" class="position-fixed map-box"></div>
+  <div id="view-map" class="position-fixed map-box">
+    表示されない場合
+    <button type="button" class="btn btn-warning" onclick="location.reload();" >Warning</button>
+  </div>
   <% end %>
   <div class="mycont container-fluid text-center">
 

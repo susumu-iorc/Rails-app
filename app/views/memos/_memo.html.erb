@@ -2,7 +2,7 @@
   <div class="card-header" style="font-size:x-large;"><%= @shop.shop_name %></div>
   <div class="card-body">
     <h5 class="card-title">
-      <a href="https://www.google.com/maps/dir/?api=1&origin=<%=@base.lat%>,<%=@base.lng%>&destination=<%=@shop.shop_name%>&destination_place_id=<%=@memo.place_id%>&travelmode=walking"><%= @shop.shop_address %></a>
+      <a href="https://www.google.com/maps/dir/?api=1&origin=<%=@base.lat%>,<%=@base.lng%>&destination=<%=@shop.shop_name%>&destination_place_id=<%=@memo.place_id%>&travelmode=walking" target=”_blank”><%= @shop.shop_address %></a>
       <%= render 'favo_star' %>
     </h5>
     <p class="card-text">訪問数：<%= @memo.count %></p>
@@ -20,29 +20,11 @@
       <h2>メモ編集  <input type="button" onclick="toggle_memo_btn()" value="編集中断" style= "margin: 20px;" class="btn btn-primary"></h2>
       <%= form_with url: "./update" do |form|%>
         <%= form.submit value: '保存', class: 'btn btn-outline-success' %><br>
-        <%= form.text_area :memo , size: "35x60", value: @memo.memo %>
+        <%= form.text_area :memo , size: "35x30", value: @memo.memo %>
         <%= form.hidden_field :place_id, value: @memo.place_id %>
         <%= form.hidden_field :user_id, value: @memo.user_id %>
       <% end %>
       </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<button class="btn btn-primary" onclick="history.back(-1)">戻る</button>

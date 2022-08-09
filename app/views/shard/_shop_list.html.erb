@@ -1,6 +1,6 @@
 <% ( 0 .. @place_num -1 ).each do |view_i| %>
   <div class="card" style="width: 100%;">
-    <a href="/memos/<%= @place_id[view_i] %>" class="card-link" style="text-decoration: none;">
+    <a href="/memos/<%= @place_id[view_i] %>" class="card-link" style="text-decoration: none;" >
       <div class="card-body">
         <h5 class="card-title"><%= @place_name[view_i] %></h5>
         <%= render 'shard/favo_star', i: view_i %>

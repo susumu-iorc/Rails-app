@@ -3,30 +3,29 @@
 
 <% if @base.blank? %>
   <%= form_with url: "/config/base/update" do |form|%>
-    <%= form.label '郵便番号' %>
+    <%= form.label '郵便番号' %><br>
     <%= form.text_field :post_code, placeholder: '000-0000' %><br>
-    <%= form.label '都道府県' %>  
+    <%= form.label '都道府県' %>  <br>
     <%= form.text_field :pref, placeholder: '◯◯県' %><br>
-    <%= form.label '市区町村' %>
+    <%= form.label '市区町村' %><br>
     <%= form.text_field :city, placeholder: '□□市△△区' %><br>
-    <%= form.label '町域番地' %>
+    <%= form.label '町域番地' %><br>
     <%= form.text_field :area, placeholder: '✕✕町x-x-x' %><br>
-
-    <%= form.submit value: '登録' %><br>
+    <button class="btn btn-primary" onclick="history.back(-1)" style="margin-top:10px;">戻る</button>&emsp;&emsp;&emsp;&emsp;
+    <%= form.submit value: '登録', class: "btn btn-outline-primary", style: "margin-top:10px;" %>
   <% end %>
   <%else%>
   <%= form_with url: "/config/base/update" do |form|%>
-    <%= form.label '郵便番号' %>
+    <%= form.label '郵便番号' %><br>
     <%= form.text_field :post_code, placeholder: '000-0000', value: @base.user_post_code %><br>
-    <%= form.label '都道府県' %>
+    <%= form.label '都道府県' %><br>
     <%= form.text_field :pref, value: @base.user_pref , placeholder: '◯◯県'%><br>
-    <%= form.label '市区町村' %>
+    <%= form.label '市区町村' %><br>
     <%= form.text_field :city, placeholder: '□□市△△区', value: @base.user_city %><br>
-    <%= form.label '町域番地' %>
+    <%= form.label '町域番地' %><br>
     <%= form.text_field :area, placeholder: '✕✕町x-x-x', value: @base.user_area %><br>
-    <%= form.submit value: '登録' %><br>
+   
+    <button class="btn btn-primary" onclick="history.back(-1)"style="margin-top:10px;">戻る</button>&emsp;&emsp;&emsp;&emsp;
+    <%= form.submit value: '登録', class: "btn btn-outline-primary", style: "margin-top:10px;" %>
   <% end %>
-
-
-
 <%end%>
