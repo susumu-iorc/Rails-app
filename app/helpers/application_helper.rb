@@ -6,6 +6,7 @@ module ApplicationHelper
         memo
     end
   end
+
   def star_color_favo( favo = 0)
     case favo
     when 0 then
@@ -17,5 +18,10 @@ module ApplicationHelper
     when 3 then
       return 'fill:#C00;','fill:#CC0;','fill:#CC0;','fill:#CC0;'
     end
+  end
+
+  def navi_link( )
+    return 'text' 
+    #'<a href="https://www.google.com/maps/dir/?api=1&origin=' + base_lat + ',' + base_lng + '&destination=' + place_name +'&destination_place_id=' + place_id + '&travelmode=walking' + '">' + text + '</a>'
   end
 end

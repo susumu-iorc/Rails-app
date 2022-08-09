@@ -37,6 +37,7 @@ class ShopListController < ApplicationController
           @place_lng    = []
           @memo_exists  = []
           @memo         = []
+          @navi_link_html = []
           @place_num    = 0
           # 例外処理
           begin
@@ -76,6 +77,7 @@ class ShopListController < ApplicationController
                   @memo_exists.push("memo作りました")
                 end
               end
+
               @memo.push( Memo.find_by(place_id: @place_id[@place_num], user_id: current_user.id) )
               @place_num+=1
             end
@@ -95,6 +97,7 @@ class ShopListController < ApplicationController
     gon.place_num = @place_num
     gon.place_lat = @place_lat
     gon.place_lng = @place_lng
+    gon.navi_link = @navi_link_html
   end
   def new
   end
